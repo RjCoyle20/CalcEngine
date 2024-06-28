@@ -25,7 +25,7 @@ public class Main {
                 results[i] = leftVals[i] * rightVals[i];
                 break;
             case  'd' :
-                results[i] = rightVals[i] != 0 ? leftVals[i] / rightVals[i] : 0.0d
+                results[i] = rightVals[i] != 0 ? leftVals[i] / rightVals[i] : 0.0d;
                 break;
             default:
                 System.out.println("Invalid opCode: " + opCodes[i]);
@@ -34,7 +34,8 @@ public class Main {
             
         }
     }
-                
-    System.out.println(results);
+        
+    for (double currentResult: results)
+    System.out.println(currentResult);
     }
 }
