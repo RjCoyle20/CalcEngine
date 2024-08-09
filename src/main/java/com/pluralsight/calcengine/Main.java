@@ -13,14 +13,31 @@ public class Main {
         char[] opCodes = {'d', 'a', 's', 'm'};
         double[] results = new double[opCodes.length];
 
-        for (int i = 0; i < opCodes.length; i++){
-           results[i] = execute(opCodes[i], leftVals[i], rightVals[i]);
+        if(args.length == 0) {
+            for (int i = 0; i < opCodes.length; i++){
+                results[i] = execute(opCodes[i], leftVals[i], rightVals[i]);
+            }
+
+            for (double currentResult: results)
+                System.out.println(currentResult);
+            } else if (args.length == 3) {
+                handleComandLine(args);
+            } else 
+                System.out.println("Please provide an operation code and 2 numeric values");
+        } 
+
+
+
+    private static void handleComandLine(String[] args) {
+        char opCode = args[0].charAt(0);
+        double leftVal = Double.parseDouble(args[1]);
+        double rightVal = Double.parseDouble(args[2]);
+        double result = execute(opCode, leftVal, rightVal);
+        System.out.println(result);
     }
-        
-    for (double currentResult: results)
-        System.out.println(currentResult);
-    }
-    
+
+
+
     static double execute(char opCode, double leftVal, double rightVal) {
         double result;
         switch (opCode) {
@@ -44,4 +61,26 @@ public class Main {
         }
         return result;
     }
+
+    static char opCodeFromString(String operationName) {
+        char opCode = operationName.charAt(0);
+        return opCode;
+    }
+
+    double valueFromWord (String word) {
+
+        String[] numberWords = {
+            "zero", "one", "two", "three", "four",
+            "five", "six", "seven", "eight", "nine"
+        };
+        double value = 0d;
+        for (int index = 0; index < numberWords.length; index++) {
+            if (word.equals(numberWords[index])){
+                value = index;
+                break;
+            }
+        } 
+        return value;
+    }
+
 }
