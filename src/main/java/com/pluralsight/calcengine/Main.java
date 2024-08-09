@@ -1,5 +1,7 @@
 package com.pluralsight.calcengine;
 
+import java.util.Scanner;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 
@@ -27,6 +29,21 @@ public class Main {
         } 
 
 
+    static void executeInteractively() {
+        System.out.println("Enter an operation and two numbers");
+        Scanner scanner = new Scanner(System.in);
+        String userInput = scanner.nextLine();
+        String[] parts =userInput.split(" ");
+        performOperation(parts);
+    }
+
+    private static void performOperation(String[] parts) {
+        char opCode = opCodeFromString(parts[0]);
+        double leftVal = valueFromWord(parts[1]);
+        double rightVal = valueFromWord(parts[2]);
+        double result = execute(opCode, leftVal, rightVal);
+        System.out.println(result);
+    }
 
     private static void handleComandLine(String[] args) {
         char opCode = args[0].charAt(0);
@@ -67,7 +84,7 @@ public class Main {
         return opCode;
     }
 
-    double valueFromWord (String word) {
+    static double valueFromWord (String word) {
 
         String[] numberWords = {
             "zero", "one", "two", "three", "four",
