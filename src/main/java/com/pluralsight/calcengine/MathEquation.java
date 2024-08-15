@@ -7,6 +7,38 @@ public class MathEquation {
     char opCode;
     double result;
 
+    public double getLeftVal() {
+        return leftVal;
+    }
+
+    public void setLeftVal(double leftVal) {
+        this.leftVal = leftVal;
+    }
+
+    public double getRightVal() {
+        return rightVal;
+    }
+
+    public void setRightVal(double rightVal) {
+        this.rightVal = rightVal;
+    }
+
+    public char getOpCode() {
+        return opCode;
+    }
+
+    public void setOpCode(char opCode) {
+        this.opCode = opCode;
+    }
+
+    public double getResult() {
+        return result;
+    }
+
+    public void setResult(double result) {
+        this.result = result;
+    }
+
     void execute() {
         switch (opCode) {
             case 'a' :
