@@ -7,6 +7,18 @@ public class MathEquation {
     char opCode;
     double result;
 
+    public MathEquation() {}
+
+    public MathEquation(char opCode) {
+        this.opCode = opCode;
+    }
+
+    public MathEquation(double leftVal, double rightVal, char opCode) {
+        this(opCode);
+        this.leftVal = leftVal;
+        this.rightVal = rightVal;
+    }
+
     public double getLeftVal() {
         return leftVal;
     }
