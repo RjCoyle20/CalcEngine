@@ -29,6 +29,7 @@ public class Main {
 //                handleComandLine(args);
 //            } else
 //                System.out.println("Please provide an operation code and 2 numeric values");
+        performCalculations();
         }
 
 
@@ -43,12 +44,16 @@ public class Main {
 
         for (MathEquation equation : equations) {
             equation.execute();
-            System.out.println("result = " + equation.result);
-            System.out.println("bye");
-            System.out.println("Average result " + MathEquation.getAverageResult());
+            System.out.println(equation);
         }
         System.out.println("Average result = " + MathEquation.getAverageResult());
 
+        //useOverloads();
+
+    }
+
+
+    static void useOverloads(){
         System.out.println();
         System.out.println("Using execute overloads");
         System.out.println();
@@ -64,9 +69,6 @@ public class Main {
         equationOverload.execute(leftInt, rightInt);
         System.out.println("Overload result with ints: " + equationOverload.getResult());
     }
-
-
-
 
     static void executeInteractively() {
         System.out.println("Enter an operation and two numbers");

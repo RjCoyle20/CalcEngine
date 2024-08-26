@@ -60,6 +60,31 @@ public class MathEquation {
 
         result = (int)result;
     }
+
+    public String toString(){
+        char symbol = symbolFromOpCode();
+        StringBuilder builder = new StringBuilder(20);
+        builder.append(leftVal);
+        builder.append(" ");
+        builder.append(symbol);
+        builder.append(" ");
+        builder.append(rightVal);
+        builder.append(" = ");
+        builder.append(result);
+        return builder.toString();
+    }
+    public char symbolFromOpCode(){
+        char[] opCodes = {'a', 's', 'm', 'd'};
+        char[] symbols = {'+', '-', '*', '/'};
+        char symbol = ' ';
+        for(int index = 0; index < opCodes.length; index++) {
+            if (opCode == opCodes[index]) {
+                symbol = symbols[index];
+                break;
+            }
+        }
+        return symbol;
+    }
     public static double getAverageResult() {
         return sumOfResults / numberOfCalculations;
     }
