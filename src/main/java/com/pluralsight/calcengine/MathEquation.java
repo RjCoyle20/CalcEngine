@@ -22,6 +22,48 @@ public class MathEquation {
         this.rightVal = rightVal;
     }
 
+    public void execute() {
+        switch (opCode) {
+            case 'a' :
+                result = leftVal + rightVal;
+                break;
+            case 's' :
+                result = leftVal - rightVal;
+                break;
+            case 'm' :
+                result = leftVal * rightVal;
+                break;
+            case  'd' :
+                result = rightVal != 0 ? leftVal / rightVal : 0.0d;
+                break;
+            default:
+                System.out.println("Invalid opCode: " + opCode);
+                result = 0.0d;
+                break;
+
+        }
+        numberOfCalculations++;
+        sumOfResults += result;
+    }
+
+    public void execute (double leftVal, double rightVal){
+        this.leftVal = leftVal;
+        this.rightVal = rightVal;
+
+        execute();
+    }
+
+    public void execute (int leftVal, int rightVal){
+        this.leftVal = leftVal;
+        this.rightVal = rightVal;
+        execute();
+
+        result = (int)result;
+    }
+    public static double getAverageResult() {
+        return sumOfResults / numberOfCalculations;
+    }
+
     public double getLeftVal() {
         return leftVal;
     }
@@ -54,32 +96,5 @@ public class MathEquation {
         this.result = result;
     }
 
-    void execute() {
-        switch (opCode) {
-            case 'a' :
-                result = leftVal + rightVal;
-                break;
-            case 's' :
-                result = leftVal - rightVal;
-                break;
-            case 'm' :
-                result = leftVal * rightVal;
-                break;
-            case  'd' :
-                result = rightVal != 0 ? leftVal / rightVal : 0.0d;
-                break;
-            default:
-                System.out.println("Invalid opCode: " + opCode);
-                result = 0.0d;
-                break;
-
-        }
-        numberOfCalculations++;
-        sumOfResults += result;
-    }
-
-    public static double getAverageResult() {
-        return sumOfResults / numberOfCalculations;
-    }
 
 }
