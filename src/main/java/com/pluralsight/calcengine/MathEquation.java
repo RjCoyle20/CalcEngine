@@ -30,7 +30,7 @@ public class MathEquation {
             case SUBTRACT :
                 result = leftVal - rightVal;
                 break;
-            case MULTIPLY: :
+            case MULTIPLY:
                 result = leftVal * rightVal;
                 break;
             case  DIVIDE:
@@ -62,7 +62,7 @@ public class MathEquation {
     }
 
     public String toString(){
-        char symbol = symbolFromOpCode();
+        char symbol = opCode.getSymbol();
         StringBuilder builder = new StringBuilder(20);
         builder.append(leftVal);
         builder.append(" ");
@@ -73,18 +73,7 @@ public class MathEquation {
         builder.append(result);
         return builder.toString();
     }
-    public char symbolFromOpCode(){
-        char[] opCodes = {'a', 's', 'm', 'd'};
-        char[] symbols = {'+', '-', '*', '/'};
-        char symbol = ' ';
-        for(int index = 0; index < opCodes.length; index++) {
-            if (opCode == opCodes[index]) {
-                symbol = symbols[index];
-                break;
-            }
-        }
-        return symbol;
-    }
+
     public static double getAverageResult() {
         return sumOfResults / numberOfCalculations;
     }
