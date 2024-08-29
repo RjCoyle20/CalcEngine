@@ -29,7 +29,11 @@ public class Main {
 //                handleComandLine(args);
 //            } else
 //                System.out.println("Please provide an operation code and 2 numeric values");
-        performCalculations();
+        if (args.length == 1 && args[0].equals("interactive"))
+            executeInteractively();
+        else performCalculations();
+
+
         }
 
 
@@ -82,8 +86,9 @@ public class Main {
         char opCode = opCodeFromString(parts[0]);
         double leftVal = valueFromWord(parts[1]);
         double rightVal = valueFromWord(parts[2]);
-        double result = execute(opCode, leftVal, rightVal);
-        displayResult(opCode, leftVal, rightVal, result);
+        MathEquation equation = new MathEquation(leftVal, rightVal, opCode);
+        equation.execute();
+        System.out.println(equation);
     }
 
     private static void displayResult(char opCode, double leftVal, double rightVal, double result) {
@@ -157,13 +162,18 @@ public class Main {
             "zero", "one", "two", "three", "four",
             "five", "six", "seven", "eight", "nine"
         };
+        boolean isValueSet = false;
         double value = 0d;
         for (int index = 0; index < numberWords.length; index++) {
             if (word.equals(numberWords[index])){
                 value = index;
+                isValueSet = true;
                 break;
             }
-        } 
+        }
+        if (!isValueSet) {
+            value = Double.parseDouble(word);
+        }
         return value;
     }
 
